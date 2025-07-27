@@ -60,16 +60,14 @@
   </style>
 </head>
 <body>
-
-  <!-- Top Navigation -->
   <div class="topbar">
     <ul class="nav-links">
-      <li><a href="index.html" class="active">HOME</a></li>
-      <li><a href="research.html">RESEARCH</a></li>
-      <li><a href="publications.html">PUBLICATIONS</a></li>
-      <li><a href="outreach.html">OUTREACH</a></li>
-      <li><a href="travel.html">TRAVEL</a></li>
-      <li><a href="music.html">MUSIC</a></li>
+      <li><a href="#home" id="nav-home" class="active">HOME</a></li>
+      <li><a href="#research" id="nav-research">RESEARCH</a></li>
+      <li><a href="#publications" id="nav-publications">PUBLICATIONS</a></li>
+      <li><a href="#outreach" id="nav-outreach">OUTREACH</a></li>
+      <li><a href="#travel" id="nav-travel">TRAVEL</a></li>
+      <li><a href="#music" id="nav-music">MUSIC</a></li>
     </ul>
     <div class="lang-switch">
       <a href="index.html" class="active">EN</a> |
@@ -77,9 +75,8 @@
       <a href="index_jp.html">日本語</a>
     </div>
   </div>
-
-  <!-- Main Content -->
-  <div class="container">
+  <div class="container" id="main-content">
+    <!-- 默认内容：HOME -->
     <div class="profile-pic">
       <img src="profile.jpeg" alt="Xingyue Yang" />
     </div>
@@ -123,6 +120,90 @@
       </div>
     </div>
   </div>
+
+  <script>
+    // 对应栏目提示语
+    const pageNames = {
+      home: "HOME",
+      research: "RESEARCH",
+      publications: "PUBLICATIONS",
+      outreach: "OUTREACH",
+      travel: "TRAVEL",
+      music: "MUSIC"
+    };
+    const underConstruction = "This site is still under construction. Stay tuned for more updates!";
+
+    function renderPage() {
+      const hash = window.location.hash.replace("#", "") || "home";
+      // 高亮导航
+      for (const key in pageNames) {
+        const nav = document.getElementById("nav-" + key);
+        if (nav) nav.classList.toggle("active", hash === key);
+      }
+      // 渲染主体
+      const container = document.getElementById("main-content");
+      if (hash === "home") {
+        container.innerHTML = `
+    <div class="profile-pic">
+      <img src="profile.jpeg" alt="Xingyue Yang" />
+    </div>
+    <div class="intro">
+      <h1>Welcome to my homepage!</h1>
+      <p>
+        I’m currently a Ph.D. student in the Department of Mechanical Engineering at
+        <a href="https://www.utdallas.edu/">The University of Texas at Dallas</a>.
+        Prior to this, I earned my B.E. in Automation from
+        <a href="https://en.hust.edu.cn/">Huazhong University of Science and Technology</a>
+        (Sept. 2020–Jun. 2024), and spent my senior year as an exchange student in Electrical and Computer Engineering at
+        <a href="https://www.ucsb.edu/">UCSB</a> (Sept. 2023–Jun. 2024).
+      </p>
+      <p><strong>Research interests:</strong>
+        Intelligent power & energy systems (AI) — including BMS‑based storage optimization and SOH prediction, power electronics & grid‑integrated renewables;
+        secondary interests in transportation control & optimization, and soft‑robotics real‑time control & feedback.
+      </p>
+      <p><strong>Current research projects:</strong>
+        Machine‑learning–driven battery health diagnostics and multi‑sources physics‑informed modeling.
+      </p>
+      <p>
+        I am co‑author of one conference paper and hold one patent:
+        “A Flexible Wearable Supernumerary Robotic Limb for Chronic Stroke Patients“.
+      </p>
+      <p>
+        <a href="Xingyue_Yang_CV.pdf" target="_blank">View my full CV (PDF)</a>
+      </p>
+      <div class="footer">
+        <div class="contacts">
+          <strong>Contact Me:</strong>
+          <a href="mailto:xxy240001@utdallas.edu">Work: xxy240001@utdallas.edu</a>
+          <a href="mailto:xingyue_yang@ucsb.edu">School: xingyue_yang@ucsb.edu</a>
+          <a href="mailto:yangxingyue2021@gmail.com">Personal: yangxingyue2021@gmail.com</a>
+        </div>
+        <div class="social">
+          <strong>Connect:</strong>
+          <a href="https://linkedin.com/in/xingyue-yang-67901a28b" target="_blank">
+            LinkedIn: xingyue‑yang
+          </a>
+        </div>
+      </div>
+    </div>
+        `;
+      } else if (pageNames[hash]) {
+        container.innerHTML = `
+          <h1>${pageNames[hash]}</h1>
+          <p>${underConstruction}</p>
+        `;
+      } else {
+        // 防止出现未知 hash
+        window.location.hash = "#home";
+      }
+    }
+
+    window.addEventListener('hashchange', renderPage);
+    // 初始加载
+    renderPage();
+  </script>
+</body>
+
 
 </body>
 </html>
