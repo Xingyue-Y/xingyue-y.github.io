@@ -28,11 +28,13 @@
       margin-right: 30px;
     }
     .profile-pic img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
+      max-width: 200px;
+      width: auto;
+      height: auto;
+      border-radius: 10px;     /* 或者 50% */
+      object-fit: cover;       /* 保证填满时不变形 */
     }
+
     .intro {
       flex: 1;
       min-width: 0;
