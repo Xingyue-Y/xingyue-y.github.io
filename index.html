@@ -258,7 +258,71 @@
         `
       }
     };
+    DATA.en.research = `
+      <div style="width:100%;max-width:1000px;margin:auto;">
+        <h1 style="text-align:center;margin-bottom:40px;">Research</h1>
+        <div style="display:flex;flex-wrap:wrap;gap:36px;justify-content:center;">
+          
+          <!-- Research 1 -->
+          <div style="flex:1 1 400px;min-width:320px;max-width:450px;background:#f6f7fb;border-radius:12px;box-shadow:0 3px 12px rgba(41,121,255,0.07);padding:24px 20px 20px 20px;display:flex;flex-direction:column;align-items:center;">
+            <img src="Research 1.png" alt="Dual Network Multi-Fidelity Modeling" style="width:100%;max-width:360px;border-radius:10px;box-shadow:0 2px 10px #cfd8dc44;margin-bottom:16px;">
+            <div style="width:100%;">
+              <div style="color:#2979ff;font-weight:bold;margin-bottom:7px;">Dual Network Multi-Fidelity Modeling for Battery SOH Prediction</div>
+              <div style="font-size:0.96em;color:#666;margin-bottom:5px;">
+                <em>Individual project, advised by Prof. Yanwen Xu, UT Dallas</em>
+              </div>
+              <div style="font-size:1em;">
+                My work introduces a dual-network architecture that combines high-fidelity and low-fidelity battery data for robust state-of-health (SOH) prediction. By training one neural network on noisy but abundant low-fidelity data and refining it with scarce high-fidelity experiments, this approach dramatically reduces experimental cost while improving accuracy and robustness. The method achieves up to 20% lower prediction error compared to single-fidelity models, and enables effective SOH estimation even under tight budget or sparse data constraints.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Research 2 -->
+          <div style="flex:1 1 400px;min-width:320px;max-width:450px;background:#f6f7fb;border-radius:12px;box-shadow:0 3px 12px rgba(41,121,255,0.07);padding:24px 20px 20px 20px;display:flex;flex-direction:column;align-items:center;">
+            <img src="Research 2.png" alt="Feature-Augmented Time Series Modeling" style="width:100%;max-width:360px;border-radius:10px;box-shadow:0 2px 10px #cfd8dc44;margin-bottom:16px;">
+            <div style="width:100%;">
+              <div style="color:#2979ff;font-weight:bold;margin-bottom:7px;">Feature-Augmented Time Series Modeling for Battery Degradation</div>
+              <div style="font-size:0.96em;color:#666;margin-bottom:5px;">
+                <em>Collaborative project, advised by Prof. Yanwen Xu, UT Dallas</em>
+              </div>
+              <div style="font-size:1em;">
+                I developed a deep learning framework that predicts battery health by jointly analyzing historical degradation patterns and extracted statistical features. This dual-horizon LSTM model directly maps recent cycle data to future SOH trajectories, capturing both short-term dynamics and long-term trends. By integrating engineered features from the battery’s charging curve, my method improves forecasting accuracy by over 25% compared to models using raw time series alone, supporting both one-step and multi-step SOH prediction.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Research 3 -->
+          <div style="flex:1 1 400px;min-width:320px;max-width:450px;background:#f6f7fb;border-radius:12px;box-shadow:0 3px 12px rgba(41,121,255,0.07);padding:24px 20px 20px 20px;display:flex;flex-direction:column;align-items:center;">
+            <img src="Research 3.png" alt="Microgrid Droop Control Optimization" style="width:100%;max-width:360px;border-radius:10px;box-shadow:0 2px 10px #cfd8dc44;margin-bottom:16px;">
+            <div style="width:100%;">
+              <div style="color:#2979ff;font-weight:bold;margin-bottom:7px;">Microgrid Droop Control Optimization Based on Renewable Energy</div>
+              <div style="font-size:0.96em;color:#666;margin-bottom:5px;">
+                <em>Intern project, advised by Prof. Hua Geng, Tsinghua University</em>
+              </div>
+              <div style="font-size:1em;">
+                I explored droop control strategies for DC microgrids with multiple renewable sources. Through detailed simulation and optimization, my work enhances grid stability and dynamic response when integrating solar, wind, and storage. The optimized control scheme addresses the challenge of balancing variable supply and demand, laying the groundwork for more reliable and sustainable energy systems.
+              </div>
+            </div>
+          </div>
+          
+          <!-- Research 4 -->
+          <div style="flex:1 1 400px;min-width:320px;max-width:450px;background:#f6f7fb;border-radius:12px;box-shadow:0 3px 12px rgba(41,121,255,0.07);padding:24px 20px 20px 20px;display:flex;flex-direction:column;align-items:center;">
+            <img src="Research 4.png" alt="Real-Time Feedback for Robotic Rehabilitation" style="width:100%;max-width:360px;border-radius:10px;box-shadow:0 2px 10px #cfd8dc44;margin-bottom:16px;">
+            <div style="width:100%;">
+              <div style="color:#2979ff;font-weight:bold;margin-bottom:7px;">Real-Time Feedback and Control Systems for Wearable Robotic Rehabilitation</div>
+              <div style="font-size:0.96em;color:#666;margin-bottom:5px;">
+                <em>Collaborative project, advised by Prof. Jian Huang, HUST</em>
+              </div>
+              <div style="font-size:1em;">
+                I designed and implemented real-time data acquisition and feedback control systems for a wearable robotic hand, supporting stroke patients in regaining functional mobility. My work focused on integrating embedded hardware, precise sensor processing, and closed-loop feedback algorithms, enabling the robotic limb to deliver adaptive assistance based on patient intent and muscle signals. The developed system provided immediate, responsive support, greatly improving the effectiveness of rehabilitation and user experience, and demonstrating the transformative potential of sensor-based robotics in medical applications.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
 
+  
     // —— 补充 PUBLICATIONS 页面的内容 ——  
     DATA.en.publications = `
       <div style="width:100%;text-align:left;padding:20px;">
@@ -390,6 +454,8 @@
       const main = document.getElementById('mainContent');
       if (currentPage === 'home') {
         main.innerHTML = DATA[currentLang].home;
+      } else if (currentPage === 'research') {
+        main.innerHTML = DATA[currentLang].research;
       } else if (currentPage === 'publications') {
         main.innerHTML = DATA[currentLang].publications;
       } else {
